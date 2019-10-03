@@ -1,4 +1,13 @@
-# cohosting SPEC
+
+
+# MFS cohosting SPEC (experimental draft)
+
+> ### 🚧 this is not an official specification, just an early, exploratory experiment 🚧
+>
+> The goal is to see what is possible with the [mutable filesystem (MFS)](https://docs.ipfs.io/guides/concepts/mfs/), and what could be possible if we extend it.
+>
+> ⚠️ Feedback is welcome, PR or fill an issue!  ⚠️
+
 
 * [Site identifiers](#site-identifiers)
 * [Path conventions](#path-conventions)
