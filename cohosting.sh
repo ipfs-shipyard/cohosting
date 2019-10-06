@@ -24,7 +24,7 @@ update () {
 
     if [ "/ipfs/$latest_cid" = "$cid" ]; then
       ipfs files mv "$path/$latest" "$path/$(date -u +"%Y-%m-%d_%H%M%S")"
-      exit 0
+      return
     fi
   fi
 
