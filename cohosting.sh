@@ -53,7 +53,9 @@ if [ "$1" = "add" ]; then
   shift 1
 
   for domain in "$@"; do
+    echo -n "Adding $domain..."
     update $domain
+    echo " done!"
   done
 
   exit 0
@@ -67,7 +69,9 @@ if [ "$1" = "rm" ]; then
   shift 1
 
   for domain in "$@"; do
+    echo -n "Removing $domain..."
     remove $domain
+    echo " done!"
   done
 
   exit 0
@@ -90,7 +94,9 @@ fi
 
 if [ "$1" = "sync" ]; then
   ipfs files ls /cohosting | while read domain; do
+    echo -n "Syncing $domain..."
     update $domain
+    echo " done!"
   done
   exit 0
 fi
@@ -98,8 +104,10 @@ fi
 if [ "$1" = "gc" ]; then
   if [ $# -eq 1 ]; then
     ipfs files ls /cohosting | while read domain; do
+      echo -n "Cleaning $domain..."
       remove $domain
       ipfs files mkdir -p "/cohosting/$domain"
+      echo " done!"
     done
     exit 0
   fi
@@ -109,8 +117,10 @@ if [ "$1" = "gc" ]; then
   fi
 
   ipfs files ls /cohosting | while read domain; do
+    echo -n "Cleaning $domain..."
     ipfs files ls "/cohosting/$domain" | tail -r | tail -n "+$2" | while read snap; do
       ipfs files rm -rf "/cohosting/$domain/$snap"
     done
+    echo " done!"
   done
 fi
