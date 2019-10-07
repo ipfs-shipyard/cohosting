@@ -28,6 +28,7 @@ update () {
     fi
   fi
 
+  ipfs refs --recursive $cid > /dev/null
   ipfs files cp $cid "$path/$(date -u +"%Y-%m-%d_%H%M%S")"
 }
 
