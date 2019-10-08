@@ -76,7 +76,7 @@ $ ipfs files rm  /cohosting/docs.ipfs.io
    /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR
    ```
 
-4. Fetch all the contents of the CID to the repo
+4. Ensure contents are in the local repo (below command will fetch missing blocks in the background)
    ```console
    $ ipfs refs --recursive /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR
    ```
