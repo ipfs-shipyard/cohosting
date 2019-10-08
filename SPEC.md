@@ -34,7 +34,7 @@ Currently supported pointers:
 
 ## Operations
 
-Below is a complete list of all operations needed for implementing this spec.  
+Below is a complete list of all operations needed for implementing this spec.
 One can execute commands manually in shell or automate everything using programmatic interfaces.
 
 Note: the following examples use `docs.ipfs.io` as a `<site-id>`
@@ -76,11 +76,16 @@ $ ipfs files rm  /cohosting/docs.ipfs.io
    /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR
    ```
 
-4. Copy it to MFS using current UTC time as `<timestamp>`
+4. Ensure contents are in the local repo (below command will fetch missing blocks in the background)
+   ```console
+   $ ipfs refs --recursive /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR
+   ```
+
+5. Copy it to MFS using current UTC time as `<timestamp>`
    ```console
    $ ipfs files cp /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR /cohosting/docs.ipfs.io/2019-08-22_153940
    ```
-5. (optional) Drop the previous snapshot (identified in step 2) if it points at the same CID
+6. (optional) Drop the previous snapshot (identified in step 2) if it points at the same CID
    * read the CID of the previous snapshot:
       ```console
       $ ipfs files stat /cohosting/docs.ipfs.io/2019-08-22_153940 | head -1
