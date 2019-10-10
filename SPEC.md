@@ -10,13 +10,19 @@
 
 
 * [Site identifiers](#site-identifiers)
-* [Path conventions](#path-conventions)
 * [Lazy and full cohosting](#lazy-and-full-cohosting)
+* [Path conventions](#path-conventions)
 * [Operations](#operations)
   * [Adding](#adding)
   * [Removing](#removing)
   * [Updating](#updating)
 
+## Lazy and full cohosting
+
+There are two ways os cohosting a website: lazy and full cohosting. Lazy cohosting is the **default**.
+
+- **Lazy** cohosting means that contents will be fetched on visit. In other words, if a website is being cohosted lazily, then only the pages that are visited should be cohosted.
+- **Full** cohosting means the entire website should be fetched fully whenever a snapshot is made.
 
 ## Site identifiers
 
@@ -34,13 +40,6 @@ Currently supported pointers:
 - `/cohosting/<lazy|full>/<site-id>` - presence of directory enables update checks for this site.
 - `/cohosting/<lazy|full>/<site-id>/<timestamp>` - site snapshot at a point in time.
   - `<timestamp>` format is `YYYY-MM-DD_hhmmss`  (zero-padded [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) in UTC)
-  
-## Lazy and full cohosting
-
-There are two ways os cohosting a website: lazy and full cohosting. Lazy cohosting is the **default**.
-
-- **Lazy** cohosting means that contents will be fetched on visit. In other words, if a website is being cohosted lazily, then only the pages that are visited should be cohosted.
-- **Full** cohosting means the entire website should be fetched fully whenever a snapshot is made.
 
 ## Operations
 
