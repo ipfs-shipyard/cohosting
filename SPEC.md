@@ -19,7 +19,7 @@
 
 ## Lazy and full cohosting
 
-There are two ways os cohosting a website: lazy and full cohosting. Lazy cohosting is the **default**.
+There are two modes of cohosting a website: `lazy` (default) and `full`.
 
 - **Lazy** cohosting means that contents will be fetched on visit. In other words, if a website is being cohosted lazily, then only the pages that are visited should be cohosted.
 - **Full** cohosting means the entire website should be fetched fully whenever a snapshot is made.
