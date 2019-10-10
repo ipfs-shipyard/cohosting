@@ -96,7 +96,8 @@ multiformats.io
 
 4. **If** it is a **fully** cohosted website, ensure contents are in the local repo (below command will fetch missing blocks in the background)
    ```console
-   $ ipfs refs --recursive /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR
+   $ ipfs refs --recursive /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR   # blocking
+   $ ipfs refs --recursive /ipfs/Qmd41WqbCsfTx4wJvP6vvv3hHb46bEHG1hC6Kqt7mhGQUR & # in the background
    ```
 
 5. Copy it to MFS using current UTC time as `<timestamp>`
