@@ -31,12 +31,13 @@ The following [IPFS Shipyard](https://github.com/ipfs-shipyard/) projects could 
 🍊 = In progress  
 🍏 = Complete
 
-#### 🍏 [cohosting.sh](cohosting.sh)
+#### 🍊 [cohosting.sh](cohosting.sh)
 > MVP bash script that can be used for cli
 
   - [x] `add` `rm` for adding / removing sites to cohosting list via commandline
   - [x] `sync` a command to run cohosting check (for use in `crond` etc)
   - [x] `gc [n]` drop all old snapshots (if `n` is provided, keeps that many snapshots per site)
+  - [ ] Lazy cohosting
 
 #### 🍎 [ipfs-cohost](https://github.com/olizilla/ipfs-cohost)
 > NPM-based interactive cli tool
