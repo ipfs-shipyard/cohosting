@@ -116,7 +116,7 @@ multiformats.io
      $  ipfs files rm /cohosting/<lazy|full>/docs.ipfs.io/2019-08-22_153940
      ```
 
-### Chaning cohosting type
+### Changing cohosting type
 
 When changing from `lazy` to `full` cohosting, simply move snapshots to the respective directory:
 
