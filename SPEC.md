@@ -15,7 +15,9 @@
 * [Operations](#operations)
   * [Adding](#adding)
   * [Removing](#removing)
+  * [Listing](#listing)
   * [Updating](#updating)
+  * [Changing cohosting type](#changing-cohosting-type)
 
 ## Lazy and full cohosting
 
