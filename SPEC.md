@@ -140,5 +140,7 @@ $ ipfs files rm -r /cohosting/<lazy|full>/ipfs.io
 To remove all but the last _n_ snapshots:
 
 ```console
-$ HALP
+$ ipfs files ls /cohosting/<lazy|full>/ipfs.io | tail -r | tail -n +3
+# For each snapshot
+$ ipfs files ls /cohosting/<lazy|full>/ipfs.io/$snapshot
 ```
