@@ -18,6 +18,7 @@
   * [Listing](#listing)
   * [Updating](#updating)
   * [Changing cohosting type](#changing-cohosting-type)
+  * [Prune](#prune)
 
 ## Lazy and full cohosting
 
@@ -59,7 +60,7 @@ $ ipfs files mkdir -p /cohosting/<lazy|full>/docs.ipfs.io
 ### Removing
 
 ```console
-$ ipfs files rm  /cohosting/<lazy|full>/docs.ipfs.io
+$ ipfs files rm -r /cohosting/<lazy|full>/docs.ipfs.io
 ```
 
 ### Listing
@@ -127,3 +128,17 @@ $ ipfs files mv /cohosting/lazy/ipfs.io /cohosting/full/ipfs.io
 ```
 
 Or the other way around.
+
+### Prune
+
+The act of deleting old snapshots. To remove all snapshots for a certain domain:
+
+```console
+$ ipfs files rm -r /cohosting/<lazy|full>/ipfs.io
+```
+
+To remove all but the last _n_ snapshots:
+
+```console
+$ HALP
+```
