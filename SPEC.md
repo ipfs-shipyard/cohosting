@@ -131,16 +131,22 @@ Or the other way around.
 
 ### Pruning
 
-The act of deleting old snapshots. To remove all snapshots for a certain domain:
-
-```console
-$ ipfs files rm -r /cohosting/<lazy|full>/ipfs.io
-```
-
 Pruning is the act of deleting some of oldest snapshots while keeping _n_ recent ones around.
 
 ```console
-$ ipfs files ls /cohosting/<lazy|full>/ipfs.io | tail -r | tail -n +3
-# For each snapshot
-$ ipfs files ls /cohosting/<lazy|full>/ipfs.io/$snapshot
+# assuming we have 3 snapshots:
+$ ipfs files ls /cohosting/full/docs.ipfs.io | sort
+2019-10-10_000001
+2019-10-11_000002
+2019-10-12_000003
+
+# we decide to keep only the last (latest) one (n=1)
+# 1. get snapshots ready to be pruned:
+$ ipfs files ls /cohosting/full/docs.ipfs.io | sort | head -n -1
+2019-10-10_000001
+2019-10-11_000002
+
+# 2. perform pruning by removing each snapshot:
+$ ipfs files rm -r /cohosting/full/ipfs.io/2019-10-10_000001
+$ ipfs files rm -r /cohosting/full/ipfs.io/2019-10-11_000002
 ```
