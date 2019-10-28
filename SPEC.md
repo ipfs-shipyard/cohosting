@@ -129,7 +129,7 @@ $ ipfs files mv /cohosting/lazy/ipfs.io /cohosting/full/ipfs.io
 
 Or the other way around.
 
-### Prune
+### Pruning
 
 The act of deleting old snapshots. To remove all snapshots for a certain domain:
 
