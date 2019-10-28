@@ -137,7 +137,7 @@ The act of deleting old snapshots. To remove all snapshots for a certain domain:
 $ ipfs files rm -r /cohosting/<lazy|full>/ipfs.io
 ```
 
-To remove all but the last _n_ snapshots:
+Pruning is the act of deleting some of oldest snapshots while keeping _n_ recent ones around.
 
 ```console
 $ ipfs files ls /cohosting/<lazy|full>/ipfs.io | tail -r | tail -n +3
