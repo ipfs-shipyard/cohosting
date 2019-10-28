@@ -18,7 +18,7 @@
   * [Listing](#listing)
   * [Updating](#updating)
   * [Changing cohosting type](#changing-cohosting-type)
-  * [Prune](#prune)
+  * [Pruning](#pruning)
 
 ## Lazy and full cohosting
 
