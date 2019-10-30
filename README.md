@@ -39,10 +39,10 @@ The following [IPFS Shipyard](https://github.com/ipfs-shipyard/) projects could 
   - [x] `gc [n]` drop all old snapshots (if `n` is provided, keeps that many snapshots per site)
   - [ ] Lazy cohosting
 
-#### 🍎 [ipfs-cohost](https://github.com/olizilla/ipfs-cohost)
+#### 🍏 [ipfs-cohost](https://github.com/olizilla/ipfs-cohost)
 > NPM-based interactive cli tool
 
-  - [ ] switch from `pin` to MFS-based spec
+  - [x] switch from `pin` to MFS-based spec
 
 #### 🍎 [ipfs-companion](https://github.com/ipfs-shipyard/ipfs-companion)
   > browser extension
