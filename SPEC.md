@@ -18,6 +18,7 @@
   * [Listing](#listing)
   * [Updating](#updating)
   * [Changing cohosting type](#changing-cohosting-type)
+  * [Pruning](#pruning)
 
 ## Lazy and full cohosting
 
@@ -59,7 +60,7 @@ $ ipfs files mkdir -p /cohosting/<lazy|full>/docs.ipfs.io
 ### Removing
 
 ```console
-$ ipfs files rm  /cohosting/<lazy|full>/docs.ipfs.io
+$ ipfs files rm -r /cohosting/<lazy|full>/docs.ipfs.io
 ```
 
 ### Listing
@@ -127,3 +128,25 @@ $ ipfs files mv /cohosting/lazy/ipfs.io /cohosting/full/ipfs.io
 ```
 
 Or the other way around.
+
+### Pruning
+
+Pruning is the act of deleting some of oldest snapshots while keeping _n_ recent ones around.
+
+```console
+# assuming we have 3 snapshots:
+$ ipfs files ls /cohosting/full/docs.ipfs.io | sort
+2019-10-10_000001
+2019-10-11_000002
+2019-10-12_000003
+
+# we decide to keep only the last (latest) one (n=1)
+# 1. get snapshots ready to be pruned:
+$ ipfs files ls /cohosting/full/docs.ipfs.io | sort | head -n -1
+2019-10-10_000001
+2019-10-11_000002
+
+# 2. perform pruning by removing each snapshot:
+$ ipfs files rm -r /cohosting/full/ipfs.io/2019-10-10_000001
+$ ipfs files rm -r /cohosting/full/ipfs.io/2019-10-11_000002
+```
