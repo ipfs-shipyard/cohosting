@@ -22,10 +22,10 @@
 
 ## Lazy and full cohosting
 
-There are two modes of cohosting a website: `lazy` (default) and `full`.
+There are two modes of cohosting a website: `lazy` and `full`.
 
-- **Lazy** cohosting means that contents will be fetched on the first use. In other words, only the pages visited by the user are stored in local datastore and shared with the network. This mode is the safe default that enables cohosting of big websites such as Wikipedia (hundreds of gigabytes) on machines with limited disk space while enabling offline access to resources they previously visited.
-- **Full** cohosting means the entire website should be fetched fully whenever a new snapshot is made. This mode should remain an opt-in: user needs to make an informed decision if they have enough storage to fit the entire thing in the local repository.
+- **Lazy** cohosting means that contents will be fetched on the first use. In other words, only the pages visited by the user are stored in local datastore and shared with the network.
+- **Full** cohosting means the entire website should be fetched fully whenever a new snapshot is made.
 
 ## Site identifiers
 
