@@ -3,18 +3,20 @@ set -eu
 
 usage () {
   echo "Usage:"
-  echo -e "\t$0 add <domain>..."
-  echo -e "\t$0 rm <domain>..."
-  echo -e "\t$0 ls [domain]..."
-  echo -e "\t$0 sync"
-  echo -e "\t$0 gc [n]"
+  echo -e "\t$0 add <domain>... - cohost a list of domains"
+  echo -e "\t$0 rm <domain>... - stop cohosting domains"
+  echo -e "\t$0 ls [domain]... - list cohosted domains or snapshots for a domain"
+  echo -e "\t$0 sync - update all cohosted domains"
+  echo -e "\t$0 prune [n] - remove all but the last [n] snapshots. default 1"
   exit 1
 }
+
+MFS_DIR="/cohosting/full"
 
 update () {
   domain=$1
   cid=$(ipfs resolve "/ipns/$1")
-  path="/cohosting/$domain"
+  path="$MFS_DIR/$domain"
 
   ipfs files mkdir -p $path
   latest=$(ipfs files ls $path | sort | head -1)
@@ -33,7 +35,7 @@ update () {
 }
 
 remove () {
-  ipfs files rm -rf "/cohosting/$1"
+  ipfs files rm -rf "$MFS_DIR/$1"
 }
 
 if ! [ -x "$(command -v ipfs)" ]; then
@@ -79,7 +81,7 @@ fi
 
 if [ "$1" = "ls" ]; then
   if [ $# -lt 2 ]; then
-    ipfs files ls /cohosting
+    ipfs files ls $MFS_DIR
     exit 0
   fi
 
@@ -87,13 +89,13 @@ if [ "$1" = "ls" ]; then
 
   for domain in "$@"; do
     echo "snapshots for $domain"
-    ipfs files ls "/cohosting/$domain"
+    ipfs files ls "$MFS_DIR/$domain"
   done
   exit 0
 fi
 
 if [ "$1" = "sync" ]; then
-  ipfs files ls /cohosting | while read domain; do
+  ipfs files ls $MFS_DIR | while read domain; do
     echo -n "Syncing $domain..."
     update $domain
     echo " done!"
@@ -101,14 +103,20 @@ if [ "$1" = "sync" ]; then
   exit 0
 fi
 
-if [ "$1" = "gc" ]; then
-  if [ $# -eq 1 ]; then
-    ipfs files ls /cohosting | while read domain; do
-      echo -n "Cleaning $domain..."
-      remove $domain
-      ipfs files mkdir -p "/cohosting/$domain"
-      echo " done!"
+function prune () {
+  local historyLength=${1:-"1"}
+  ipfs files ls $MFS_DIR | while read domain; do
+    echo -n "Cleaning $domain..."
+    ipfs files ls "$MFS_DIR/$domain" | tail -r | tail -n "+$(($historyLength + 1))" | while read snap; do
+      ipfs files rm -rf "$MFS_DIR/$domain/$snap"
     done
+    echo " done!"
+  done
+}
+
+if [ "$1" = "prune" ]; then
+  if [ $# -eq 1 ]; then
+    prune
     exit 0
   fi
 
@@ -116,11 +124,8 @@ if [ "$1" = "gc" ]; then
     usage
   fi
 
-  ipfs files ls /cohosting | while read domain; do
-    echo -n "Cleaning $domain..."
-    ipfs files ls "/cohosting/$domain" | tail -r | tail -n "+$2" | while read snap; do
-      ipfs files rm -rf "/cohosting/$domain/$snap"
-    done
-    echo " done!"
-  done
+  prune $2
+  exit 0
 fi
+
+usage
